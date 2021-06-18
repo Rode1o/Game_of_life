@@ -1,6 +1,8 @@
 import turtle
 import random
 import copy
+import colorsys
+import sys
 
 
 screen = turtle.Screen()
@@ -17,7 +19,7 @@ life_turtle.up()
 life_turtle.hideturtle()
 life_turtle.speed(0)
 
-n = 50  # nxn grid
+n = 30  # nxn grid
 
 
 """ ------------------------ Creating lives ------------------------ """
@@ -40,14 +42,16 @@ def init_lives():
 
 
 def draw_square(x, y, size):  # draws a filled square
-    colors = ["#4A235A", "#4A235A", "#4A235A", "#0FFF00"]
     life_turtle.up()
     life_turtle.goto(x, y)
-    life_turtle.down()
     life_turtle.seth(0)
+    life_turtle.down()
+    c = colorsys.hsv_to_rgb(0.9*size,1,1)
+    life_turtle.fillcolor(c)
+    c = colorsys.hsv_to_rgb(0.9*size,1,1)
+    life_turtle.pencolor(c)
     life_turtle.begin_fill()
     for i in range(4):
-        life_turtle.color(colors[i])
         life_turtle.fd(size)
         life_turtle.left(90)
     life_turtle.end_fill()
